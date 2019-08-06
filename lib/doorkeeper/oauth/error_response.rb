@@ -40,6 +40,8 @@ module Doorkeeper
       end
 
       def redirectable?
+        return false if @redirect_uri.blank?
+
         name != :invalid_redirect_uri && name != :invalid_client &&
           !URIChecker.oob_uri?(@redirect_uri)
       end
